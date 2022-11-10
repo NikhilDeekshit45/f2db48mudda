@@ -2,6 +2,7 @@ extends layout
 
 block content
     h1= title
+    - let items = results
     - var image_names = ["Arcadia", "Excel group", "rengvo", "honoly", "gozzby"]
     - for(let i = 0; i < 3; i++) {
         - let number = Math.floor(Math.random() * 5)
