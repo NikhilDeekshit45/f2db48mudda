@@ -1,20 +1,18 @@
-extends layout
-
-block content
-
-    h1= title
-
-    - var results = [{"stone_Name": "Limestone", "stone_Company": "Arcadia", "stone_size": 20, "stone_Rating": 4.3},{"stone_Name": "Granite", "stone_Company": "Excel group", "stone_size": 10, "stone_Rating": 4.5},{"stone_Name": "Marble", "stone_Company": "rengvo", "stone_size": 11, "stone_Rating": 4.8}]
-
-    div.container-fluid
-
-        div.row
-
-            each item, index in results
-
-                div.col-sm-2(onclick=`buy(${index})`) stone Name: #{item["stone_Name"]} <br> stone Company: #{item["stone_Company"]} <br> stone size: #{item["stone_size"]} <br> stone Rating: #{item["stone_Rating"]}
-                
-        script.
-            function buy(index) {
-             alert("You purchased item " + index)
-                }
+extends layout 
+block content 
+  h1=title 
+    - let results = [{"stone_Name": "Limestone", "stone_Company": "Arcadia", "stone_size": 20, "stone_Rating": 4.3},{"stone_Name": "Granite", "stone_Company": "Excel group", "stone_size": 10, "stone_Rating": 4.5},{"stone_Name": "Marble", "stone_Company": "rengvo", "stone_size": 11, "stone_Rating": 4.8}]
+  div(class="container-fluid")
+  div(class="row")
+    each jungle,index in results 
+                table(style='width:100%')
+                    tr 
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_name}
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_type}
+                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_quantity}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`Your animal ${itemNo+1}`)
+      }

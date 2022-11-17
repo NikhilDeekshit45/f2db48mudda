@@ -28,3 +28,6 @@ router.get('/stones/:id', stone_controller.stone_detail);
 router.get('/stones', stone_controller.stone_list); 
  
 module.exports = router; 
+// GET request for one stone.
+
+router.get('/stone/:id', stone_controller.stone_detail);

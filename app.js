@@ -1,3 +1,4 @@
+var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose')
@@ -26,18 +27,23 @@ var stoneRouter=require('./routes/stone');
 var gridbuildRouter=require('./routes/gridbuild');
 var selectorRouter=require('./routes/selector');
 var resourceRouter=require('./routes/resource');
+var stone = require("./models/stone");
+
 var app = express();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/stone', stoneRouter);
+app.use('/stone, stoneRouter');
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource',resourceRouter);
@@ -46,7 +52,7 @@ async function recreateDB(){
   // Delete everything
   await stone.deleteMany();
   let instance1 = new
-  stone({stone_Name: "Limestone", stone_Company: "Arcadia", stone_size: 20, stone_Rating: 4.3});
+ stone({stone_Name: "Limestone", stone_Company: "Arcadia", stone_size: 20, stone_Rating: 4.3});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First stone details saved")
@@ -66,17 +72,21 @@ async function recreateDB(){
  }
  let reseed = true;
  if (reseed) { recreateDB();}
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
+
 module.exports = app;

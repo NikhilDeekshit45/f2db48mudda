@@ -1,0 +1,36 @@
+extends layout 
+block content 
+  h1= title 
+  form(id='stoneForm', action="/resource/stones", method="POST" ,class='d')
+    div(class='d').form-group
+        img(src='/images/peacock.jpg' width="100px" height="100px")
+    div.form-group 
+        label.stoneAttr(for='stone_Name') stone Name 
+        input#stone_Name(type='text', name='stone_Name') 
+    div.form-group 
+        label.stoneAttr(for='stone_Company') stone Company 
+        input#stone_Company(type='text', name='stone_Company') 
+    div.form-group 
+        label.stoneAttr(for='stone_size') stone size
+        input#stone_size(type='number', name='stone_size')    
+    div.form-group 
+        label.stoneAttr(for='stone_Rating') stone Rating
+        input#stone_Rating(type='number', name='stone_Rating')   
+    input(type="submit") 
+  script. 
+    document.forms['stoneForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'POST', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Save succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Save failed " + error ) 
+      }); 
+    });
