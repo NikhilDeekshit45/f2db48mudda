@@ -1,18 +1,17 @@
 extends layout 
+
 block content 
-  h1=title 
-    - let results = [{"stone_Name": "Limestone", "stone_Company": "Arcadia", "stone_size": 20, "stone_Rating": 4.3},{"stone_Name": "Granite", "stone_Company": "Excel group", "stone_size": 10, "stone_Rating": 4.5},{"stone_Name": "Marble", "stone_Company": "rengvo", "stone_size": 11, "stone_Rating": 4.8}]
-  div(class="container-fluid")
-  div(class="row")
-    each jungle,index in results 
-                table(style='width:100%')
-                    tr 
-                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_name}
-                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_type}
-                        div(class="col-sm-2" onclick=`buy(${index})`) #{jungle.animal_quantity}
-    script.
-     
-      function buy(itemNo)
-      {
-        alert(`Your animal ${itemNo+1}`)
-      }
+    h1=title 
+    - var results = results
+    div(class="container-fluid") 
+    div(class="row m-1") 
+      each item in results  
+        - let destination = `dispatch(\"/stone/update?id=${item._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{item.stone_Name} #{item.stone_Company}(#{item.stone_Rating}) is #{item.stone_size} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+   
+    script. 
+      function dispatch(path){ 
+        window.location.href=path 
+      } 
+ 
