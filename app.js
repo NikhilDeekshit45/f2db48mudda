@@ -27,7 +27,6 @@ var stoneRouter=require('./routes/stone');
 var gridbuildRouter=require('./routes/gridbuild');
 var selectorRouter=require('./routes/selector');
 var resourceRouter=require('./routes/resource');
-var stone = require("./models/stone");
 
 var app = express();
 
@@ -43,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/stone, stoneRouter');
+app.use('/stone', stoneRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource',resourceRouter);

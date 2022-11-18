@@ -1,36 +1,36 @@
 extends layout 
+ 
 block content 
-  h1= title 
+  h1(class ='container-fluid p-5 bg-success text-warning text-center')= title 
+ 
   - let stoneid = toShow._id 
-  - let stone_Name = toShow.stone_Name
-  - let stone_Company = toShow.stone_Company
-  - let stone_size = toShow.stone_size
-  - let stone_Rating = toShow.stone_Rating
+  - let stone_Name = toShow.stone_Name 
+  - let stone_Company = toShow.stone_Company 
+  - let stone_size = toShow.stone_size 
+   
   div.row(class='mb-2') 
     div.mr-1 ID is 
     div #{stoneid} 
-  - let actionid = "/resource/stone/" + stoneid 
+  - let actionid = "/resource/stones/" + stoneid 
   form(id='stoneForm', action= actionid, method="PUT") 
     div.form-group 
         label.stoneAttr(for='stone_Name') stone Name
-        input#stone_Name(type='text', name='stone_Name', value= stone_Name ) 
+        input#stone_type(type='text', name='stone_Name', value= stone_Name) 
     div.form-group 
-        label.stoneAttr(for='stone_Company') stone Company
-        input#stone_Company(type='text', name='stone_Company', value= stone_Company ) 
+        label.stoneAttr(for='stone_Company') stone Company 
+        input#size(type='text', name='stone_Company', value= stone_Company) 
     div.form-group 
-        label.stoneAttr(for='stone_size') stone size
-        input#stone_size(type='number', name='stone_size', value= stone_size ) 
-    div.form-group 
-        label.stoneAttr(for='stone_Rating') stone Rating
-        input#stone_Rating(type='number', name='stone_Rating', value= stone_Rating )            
+        label.stoneAttr(for='stone_size') stone aize 
+        input#cost(type='number', name='stone_size', value= stone_size) 
     input(type="submit") 
+ 
   script. 
     document.forms['stoneForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 
       // TODO do something here to show user that form is being submitted 
       fetch(event.target.action, { 
         method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
       }).then((resp) => { 
         return resp.json(); // or resp.text() or whatever the server sends 
       }).then((body) => { 
@@ -40,4 +40,4 @@ block content
         // TODO handle error 
         alert("Update failed " + error ) 
       }); 
-    });
+    }); 

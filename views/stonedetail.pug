@@ -1,26 +1,24 @@
-extends layout 
+extends layout
+block content
+ h1(class='container-fluid p-5 bg-success text-warning text-center')=title 
+ - let stoneid = toShow._id
+ - let stone_Name = toShow.stone_Name
+ - let stone_Company = toShow.stone_Company
+ - let stone_size = toShow.stone_size
+ - let stone_Rating = toShow.stone_Rating
+ div
+ div.row
+ div(class='stoneAttr mr-3') stone ID is:
+ div #{stoneid}
+ div.row
+ div(class='p-2 flex-fill stoneAttr mr-3') stone Name is:
+ div #{stone_Name}
+ div.row
+ div(class='p-2 flex-fill stoneAttr mr-3') stone Company  is:
+ div #{stone_Company}
+ div.row
+ div(class='p-2 flex-fill stoneAttr mr-3') stone size  is:
+ div #{stone_size}
+ div(class='p-2 flex-fill stoneAttr mr-3') stone Rating is: 
+ div #{stone_Rating}
  
-block content 
-  h1= title 
- 
-  - let stoneid = toShow._id 
-  - let stone_Name = toShow.stone_Name
-  - let stone_Company = toShow.stone_Company
-  - let stone_size = toShow.stone_size
-  - let stone_Rating = toShow.stone_Rating
-  div 
-    div.row 
-      div(class='stoneAttr mr-3') stone ID is: 
-      div #{stoneid} 
-    div.row 
-      div(class='stoneAttr mr-3') stone Name is: 
-      div #{stone_Name} 
-    div.row 
-      div(class='stoneAttr mr-3') stone Company is: 
-      div #{stone_Company} 
-    div.row 
-      div(class='stoneAttr mr-3') stone size is: 
-      div #{stone_size}
-    div.row 
-      div(class='stoneAttr mr-3') stone Rating is: 
-      div #{stone_Rating}

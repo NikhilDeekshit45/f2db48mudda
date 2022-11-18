@@ -1,22 +1,25 @@
 extends layout 
+ 
 block content 
   h1= title 
-  form(id='stoneForm', action="/resource/stones", method="POST" ,class='d')
+ 
+  form(id='carForm', action="/resource/cars", method="POST" ,class='d')
     div(class='d').form-group
-        img(src='/images/peacock.jpg' width="100px" height="100px")
+        img(src='/images/gozzby.jpg' width="100px" height="100px")
     div.form-group 
-        label.stoneAttr(for='stone_Name') stone Name 
-        input#stone_Name(type='text', name='stone_Name') 
+        label.stoneAttr(for='stone_Name') stone Name
+        input#stone_type(type='text', name='stone_Name') 
     div.form-group 
         label.stoneAttr(for='stone_Company') stone Company 
-        input#stone_Company(type='text', name='stone_Company') 
+        input#size(type='text', name='stone_Company') 
     div.form-group 
-        label.stoneAttr(for='stone_size') stone size
-        input#stone_size(type='number', name='stone_size')    
+        label.stoneAttr(for='stone_size') stone cost 
+        input#cost(type='number', name='stone_size')
     div.form-group 
-        label.stoneAttr(for='stone_Rating') stone Rating
-        input#stone_Rating(type='number', name='stone_Rating')   
+        label.stoneAttr(for='stone_Rating') stone Company 
+        input#size(type='text', name='stone_Rating')     
     input(type="submit") 
+ 
   script. 
     document.forms['stoneForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 
@@ -33,4 +36,4 @@ block content
         // TODO handle error 
         alert("Save failed " + error ) 
       }); 
-    });
+    }); 
