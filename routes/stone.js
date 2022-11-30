@@ -23,6 +23,5 @@ router.get('/create',secured, stone_controllers.stone_create_Page);
 router.get('/update',secured, stone_controllers.stone_update_Page);
 
 /* GET delete stone page */
-router.get('/delete', stone_controllers.stone_delete_Page);
+router.get('/delete',secured, stone_controllers.stone_delete_Page);
 module.exports = router;
-
