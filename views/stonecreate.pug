@@ -3,7 +3,7 @@ extends layout
 block content 
   h1= title 
  
-  form(id='carForm', action="/resource/cars", method="POST" ,class='d')
+  form(id='stoneForm', action="/resource/stones", method="POST" ,class='d')
     div(class='d').form-group
         img(src='/images/gozzby.jpg' width="100px" height="100px")
     div.form-group 
@@ -13,10 +13,10 @@ block content
         label.stoneAttr(for='stone_Company') stone Company 
         input#size(type='text', name='stone_Company') 
     div.form-group 
-        label.stoneAttr(for='stone_size') stone cost 
+        label.stoneAttr(for='stone_size') stone size 
         input#cost(type='number', name='stone_size')
     div.form-group 
-        label.stoneAttr(for='stone_Rating') stone Company 
+        label.stoneAttr(for='stone_Rating') stone Rating 
         input#size(type='text', name='stone_Rating')     
     input(type="submit") 
  
